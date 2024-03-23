@@ -2,19 +2,23 @@
 
 ## Installation
 
+1. Clone the repository:
+    ```shell
+    git clone https://github.com/MARKSAVE2038/dvr_check.git
+    ```
 1. [**Install** `python`](https://www.freecodecamp.org/italian/news/come-installare-python-su-windows/) with `pip` and add them to the **PATH**
 
-2. Create a *virtual environment*:
-```shell
-python -m venv .venv
-```
+1. Create a *virtual environment*:
+    ```shell
+    python -m venv .venv
+    ```
 
-3. [OPTIONAL] If needed, lower Powershell execution policy:
-```shell
-set-executionpolicy remotesigned
-```
+1. [OPTIONAL] If needed, lower Powershell execution policy:
+    ```shell
+    set-executionpolicy remotesigned
+    ```
 
-4. **Activate** the virtual environment:
+1. **Activate** the virtual environment:
     - CMD:
         ```shell
         call ./.venv/Scripts/activate.bat
@@ -24,7 +28,7 @@ set-executionpolicy remotesigned
         ./.venv/Scripts/Activate.ps1
         ```
 
-5. **Install** dependencies:
+1. **Install** dependencies:
 ```shell
 pip install -r .\requirements.txt
 ```
