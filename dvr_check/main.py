@@ -2,6 +2,8 @@ import os
 import sys
 from dotenv import load_dotenv
 
+from ip_discovery import find_public_ip, update_cache
+
 import requests
 import textwrap
 
@@ -21,8 +23,11 @@ class EndpointStatus:
 
 def main():
     # Get the public IP of the current router
-    response = requests.get("https://api.ipify.org?format=json")
-    public_ip = response.json()['ip']
+    public_ip = find_public_ip()
+
+    if not update_cache(public_ip):
+        print("WARN: IP has not changed, retry later...")
+        return True
 
     # Detect whether the camera service is online or not
     camera_url = f"http://{public_ip}:8081/"
@@ -76,7 +81,7 @@ def main():
         print(f"ERROR: {e}")
         return False
 
-    print("OK: email sent!")
+    print("INFO: IP has changed, email was sent!")
     
 if __name__ == '__main__':
     if not main():
